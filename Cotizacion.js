@@ -113,13 +113,15 @@ function generatePreview() {
   const companyName = document.getElementById('company_name').value;
   const companyAddress = document.getElementById('company_address').value;
   const companyPhone = document.getElementById('company_phone').value;
-  const companyEmail = document.getElementById('company_email').value; // ✅ agregado
+  const companyEmail = document.getElementById('company_email').value; 
   const quoteNumber = document.getElementById('quote_number').value;
   const quoteDate = document.getElementById('quote_date').value || new Date().toISOString().slice(0, 10);
   const clientName = document.getElementById('client_name').value;
+  const clientRuc = document.getElementById('client_ruc').value;
   const clientAddress = document.getElementById('client_address').value;
   const validityDays = document.getElementById('validity_days').value || 30;
   const terms = document.getElementById('terms').value;
+  const paymentAccounts = document.getElementById('payment_accounts').value;
   const curr = getCurrency();
 
   const totals = calculateTotals();
@@ -153,7 +155,7 @@ function generatePreview() {
           <div class="company">${escapeHtml(companyName)}</div>
           <div class="muted">${escapeHtml(companyAddress)}</div>
           <div class="muted">${escapeHtml(companyPhone)}</div>
-          <div class="muted">${escapeHtml(companyEmail)}</div> <!-- ✅ agregado -->
+          <div class="muted">${escapeHtml(companyEmail)}</div>
         </div>
       </div>
       <div class="meta">
@@ -166,7 +168,8 @@ function generatePreview() {
     <div class="bill-to">
       <strong style="font-size:14px">CLIENTE:</strong>
       <div style="margin-top:6px;font-size:15px;font-weight:600">${escapeHtml(clientName)}</div>
-      <div class="muted"> ${escapeHtml(clientAddress)}</div>
+      <div class="muted">RUC: ${escapeHtml(clientRuc)}</div>
+      <div class="muted">${escapeHtml(clientAddress)}</div>
     </div>
 
     <table class="items">
@@ -178,9 +181,7 @@ function generatePreview() {
           <th style="width:160px;text-align:right">Subtotal</th>
         </tr>
       </thead>
-      <tbody>
-        ${itemsHtml}
-      </tbody>
+      <tbody>${itemsHtml}</tbody>
     </table>
 
     <div class="totals">
@@ -210,6 +211,10 @@ function generatePreview() {
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid #e5e7eb">
         <strong>Validez de la oferta:</strong> ${validityDays} días desde la fecha de emisión.
       </div>
+      <div style="margin-top:20px;padding-top:12px;border-top:1px solid #e5e7eb">
+        <strong>Cuentas para pagos:</strong>
+        <div style="white-space:pre-wrap">${escapeHtml(paymentAccounts)}</div>
+      </div>
     </div>
   `;
 }
@@ -218,10 +223,8 @@ function generatePreview() {
 document.addEventListener('DOMContentLoaded', function() {
   const itemsBody = document.getElementById('items_body');
   
-  // Establecer fecha actual
   document.getElementById('quote_date').value = new Date().toISOString().slice(0, 10);
   
-  // Eventos de la tabla (delegación)
   itemsBody.addEventListener('input', function(e) {
     const el = e.target;
     const idx = el.dataset.idx;
@@ -231,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const val = field === 'desc' ? el.value : Number(el.value);
     items[idx][field] = val;
     
-    // Actualizar solo el subtotal de esa fila
     const row = el.closest('tr');
     const subtotalCell = row.querySelector('.subtotal-cell');
     const item = items[idx];
@@ -260,13 +262,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Botón agregar item
   document.getElementById('add_item').addEventListener('click', function() {
     items.push({ desc: 'Nuevo producto/servicio', qty: 1, price: 0 });
     renderItemsTable();
   });
 
-  // Botón limpiar items
   document.getElementById('clear_items').addEventListener('click', function() {
     if (confirm('¿Eliminar todos los items?')) {
       items.length = 0;
@@ -274,33 +274,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Auto-actualizar cuando cambian los campos
-  ['company_name', 'company_address', 'company_phone', 'company_email', 'quote_number', 'quote_date',
-    'client_name', 'client_address', 'tax_pct', 'discount', 'discount_type', 'currency',
-    'validity_days', 'terms'].forEach(function(id) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.addEventListener('input', function() {
-          updateTotalsPreview();
-          if (document.getElementById('auto_update').checked) {
-            generatePreview();
-          }
-        });
-      }
-    });
-
-  // Generar vista previa
-  document.getElementById('preview_btn').addEventListener('click', function() {
-    generatePreview();
+  [
+    'company_name', 'company_address', 'company_phone', 'company_email',
+    'quote_number', 'quote_date', 'client_name', 'client_ruc', 'client_address',
+    'tax_pct', 'discount', 'discount_type', 'currency', 'validity_days',
+    'terms', 'payment_accounts'
+  ].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', function() {
+        updateTotalsPreview();
+        if (document.getElementById('auto_update').checked) {
+          generatePreview();
+        }
+      });
+    }
   });
 
-  // Imprimir
+  document.getElementById('preview_btn').addEventListener('click', generatePreview);
+  
   document.getElementById('print_btn').addEventListener('click', function() {
     generatePreview();
-    setTimeout(function() { window.print(); }, 300);
+    setTimeout(() => window.print(), 300);
   });
 
-  // Exportar datos
   document.getElementById('export_btn').addEventListener('click', function() {
     const data = {
       company: {
@@ -309,38 +306,36 @@ document.addEventListener('DOMContentLoaded', function() {
         phone: document.getElementById('company_phone').value,
         email: document.getElementById('company_email').value
       },
+      client: {
+        name: document.getElementById('client_name').value,
+        ruc: document.getElementById('client_ruc').value,
+        address: document.getElementById('client_address').value
+      },
       quote: {
         number: document.getElementById('quote_number').value,
         date: document.getElementById('quote_date').value,
         currency: getCurrency(),
         validityDays: document.getElementById('validity_days').value
       },
-      client: {
-        name: document.getElementById('client_name').value,
-        address: document.getElementById('client_address').value
-      },
       items: items,
       totals: calculateTotals(),
-      terms: document.getElementById('terms').value
+      terms: document.getElementById('terms').value,
+      paymentAccounts: document.getElementById('payment_accounts').value
     };
 
     const text = JSON.stringify(data, null, 2);
-    navigator.clipboard.writeText(text).then(function() {
-      alert(' Datos copiados al portapapeles');
-    }).catch(function() {
-      alert(' No se pudo copiar. Datos:\n\n' + text);
-    });
+    navigator.clipboard.writeText(text)
+      .then(() => alert(' Datos copiados al portapapeles'))
+      .catch(() => alert(' No se pudo copiar. Datos:\n\n' + text));
   });
 
-  // Restablecer
   document.getElementById('reset_btn').addEventListener('click', function() {
     if (confirm(' ¿Restablecer todos los campos?')) {
       items.length = 0;
       location.reload();
     }
   });
-  
-  // Inicializar
+
   updateTotalsPreview();
   renderItemsTable();
 });

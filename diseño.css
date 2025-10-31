@@ -6,8 +6,8 @@
   --success: #10b981;
 }
 
-* { 
-  box-sizing: border-box; 
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -41,15 +41,6 @@ h2 {
   gap: 8px;
 }
 
-.badge {
-  font-size: 11px;
-  padding: 2px 8px;
-  background: #e0f2fe;
-  color: #0369a1;
-  border-radius: 12px;
-  font-weight: 600;
-}
-
 label {
   display: block;
   font-size: 13px;
@@ -58,34 +49,38 @@ label {
   font-weight: 500;
 }
 
-input[type=text], 
-input[type=email],
-input[type=date], 
-input[type=number], 
-textarea, 
+/* ==== ESTILO UNIFORME PARA TODOS LOS CAMPOS ==== */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea,
 select {
   width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #e3e7eb;
+  padding: 10px 12px;
+  border: 1.5px solid #e3e7eb;
   border-radius: 8px;
   margin-top: 6px;
   font-size: 14px;
-  transition: border-color 0.2s;
+  background-color: #fff;
+  transition: border-color 0.2s ease;
 }
 
-input:focus, 
-textarea:focus, 
+/* Al enfocar (sin color verde) */
+input:focus,
+textarea:focus,
 select:focus {
+  border-color: #2563eb;
   outline: none;
-  border-color: var(--primary);
 }
 
-textarea {
-  resize: vertical;
-  min-height: 70px;
-  font-family: inherit;
+/* Color del placeholder */
+::placeholder {
+  color: #aaa;
+  font-size: 13px;
 }
 
+/* ======== TABLAS, BOTONES Y ELEMENTOS ======== */
 .row {
   display: flex;
   gap: 8px;
@@ -101,7 +96,7 @@ textarea {
   margin-top: 12px;
 }
 
-.items-table th, 
+.items-table th,
 .items-table td {
   border-bottom: 1px solid #eef2f5;
   padding: 8px 4px;
@@ -220,7 +215,7 @@ textarea {
   margin-top: 20px;
 }
 
-.items th, 
+.items th,
 .items td {
   border: 1px solid #e8edf2;
   padding: 10px;
@@ -261,6 +256,7 @@ textarea {
   color: var(--muted);
 }
 
+/* ======== IMPRESIÓN ======== */
 @media print {
   body {
     background: none;
@@ -285,12 +281,6 @@ textarea {
   }
 }
 
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .muted {
   color: var(--muted);
   font-size: 13px;
@@ -301,13 +291,6 @@ textarea {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 16px;
-}
-
-.logo-input {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-top: 8px;
 }
 
 .item-actions {
@@ -375,13 +358,4 @@ input[type="checkbox"] {
 
 .currency-symbol {
   font-weight: 600;
-}
-
-/* Validación de email */
-input[type="email"]:invalid {
-  border-color: #fca5a5;
-}
-
-input[type="email"]:valid {
-  border-color: #86efac;
 }

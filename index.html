@@ -9,9 +9,7 @@
 <body>
   <div class="app">
     <div class="panel">
-      <h2>
-        Crear cotización 
-      </h2>
+      <h2>Crear cotización</h2>
       
       <div>
         <label>Datos de la empresa</label>
@@ -50,6 +48,7 @@
         
         <label>Cliente</label>
         <input id="client_name" type="text" placeholder="Nombre o empresa" value="" />
+        <input id="client_ruc" type="text" placeholder="RUC del cliente" value="" />
         <input id="client_address" type="text" placeholder="Dirección del cliente" value="" />
       </div>
 
@@ -57,7 +56,6 @@
 
       <div>
         <label>Items / Productos</label>
-        
         <table class="items-table" id="items_table">
           <thead>
             <tr>
@@ -68,8 +66,7 @@
               <th style="width:5%"></th>
             </tr>
           </thead>
-          <tbody id="items_body">
-          </tbody>
+          <tbody id="items_body"></tbody>
         </table>
         
         <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
@@ -95,8 +92,14 @@
           </div>
         </div>
 
-        <div class="totals-preview" id="totals_preview">
-        </div>
+        <div class="totals-preview" id="totals_preview"></div>
+      </div>
+
+      <hr class="divider" />
+
+      <div>
+        <label>Números de cuenta para pagos</label>
+        <textarea id="payment_accounts" placeholder="Ejemplo: BCP: 123-45678910-0-12 / Interbank: 987-65432109"></textarea>
       </div>
 
       <hr class="divider" />
@@ -117,17 +120,10 @@
         <button class="btn ghost" id="export_btn">Copiar datos</button>
         <button class="btn ghost danger" id="reset_btn">Restablecer</button>
       </div>
-
-      <div style="margin-top:14px;color:#444;font-size:12px;line-height:1.5">
-         <strong>Consejo:</strong> La vista previa se actualiza automáticamente. Para guardar como PDF usa "Imprimir" y selecciona "Guardar como PDF".
-      </div>
     </div>
 
+    <!-- Panel de vista previa -->
     <div class="panel preview-wrap">
-      <div class="flex-between" style="margin-bottom:16px">
-        <h2>Vista previa</h2>
-        <div class="muted">Lista para imprimir</div>
-      </div>
       <div id="preview" class="sheet" style="min-height:700px">
         <div style="text-align:center;color:#999;padding:120px 20px">
           <div style="font-size:48px;margin-bottom:12px">📋</div>
