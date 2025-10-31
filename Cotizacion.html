@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cotizaciones</title>
+  <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+  <div class="app">
+    <div class="panel">
+      <h2>
+        Crear cotización 
+      </h2>
+      
+      <div>
+        <label>Datos de la empresa</label>
+        <input id="company_name" type="text" placeholder="Nombre de la empresa" value="NOVOTRACE" />
+        <input id="company_address" type="text" placeholder="Dirección" value="" />
+        <input id="company_phone" type="text" placeholder="Teléfono" value="" />
+        <input id="company_email" type="email" placeholder="Correo electrónico" value="" />
+      </div>
+
+      <hr class="divider" />
+
+      <div>
+        <label>Datos de la cotización</label>
+        <div class="row">
+          <div class="col">
+            <input id="quote_number" type="text" placeholder="N° Cotización" value="" />
+          </div>
+          <div class="col">
+            <input id="quote_date" type="date" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label>Moneda</label>
+            <select id="currency">
+              <option value="PEN">Soles (S/)</option>
+              <option value="USD">Dólares ($)</option>
+              <option value="EUR">Euros (€)</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>Validez (días)</label>
+            <input id="validity_days" type="number" value="30" min="1" />
+          </div>
+        </div>
+        
+        <label>Cliente</label>
+        <input id="client_name" type="text" placeholder="Nombre o empresa" value="" />
+        <input id="client_address" type="text" placeholder="Dirección del cliente" value="" />
+      </div>
+
+      <hr class="divider" />
+
+      <div>
+        <label>Items / Productos</label>
+        
+        <table class="items-table" id="items_table">
+          <thead>
+            <tr>
+              <th style="width:40%">Descripción</th>
+              <th style="width:15%">Cant.</th>
+              <th style="width:20%">Precio</th>
+              <th style="width:20%">Subtotal</th>
+              <th style="width:5%"></th>
+            </tr>
+          </thead>
+          <tbody id="items_body">
+          </tbody>
+        </table>
+        
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn small success" id="add_item">+ Agregar item</button>
+          <button class="btn ghost small" id="clear_items">Limpiar todo</button>
+        </div>
+
+        <div style="margin-top:14px" class="row">
+          <div class="col">
+            <label>IVA / IGV (%)</label>
+            <input id="tax_pct" type="number" value="18" min="0" max="100" step="0.01" />
+          </div>
+          <div class="col">
+            <label>Tipo de descuento</label>
+            <select id="discount_type">
+              <option value="amount">Monto fijo</option>
+              <option value="percent">Porcentaje (%)</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>Descuento</label>
+            <input id="discount" type="number" value="0" min="0" step="0.01" />
+          </div>
+        </div>
+
+        <div class="totals-preview" id="totals_preview">
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <div>
+        <label>Términos y condiciones</label>
+        <textarea id="terms" placeholder="Escribe las condiciones, notas o términos de pago..."></textarea>
+      </div>
+
+      <label class="auto-update-label">
+        <input type="checkbox" id="auto_update" checked />
+        <span>Actualizar vista previa automáticamente</span>
+      </label>
+
+      <div class="controls">
+        <button class="btn" id="preview_btn">Generar vista</button>
+        <button class="btn ghost" id="print_btn">Imprimir / PDF</button>
+        <button class="btn ghost" id="export_btn">Copiar datos</button>
+        <button class="btn ghost danger" id="reset_btn">Restablecer</button>
+      </div>
+
+      <div style="margin-top:14px;color:#444;font-size:12px;line-height:1.5">
+         <strong>Consejo:</strong> La vista previa se actualiza automáticamente. Para guardar como PDF usa "Imprimir" y selecciona "Guardar como PDF".
+      </div>
+    </div>
+
+    <div class="panel preview-wrap">
+      <div class="flex-between" style="margin-bottom:16px">
+        <h2>Vista previa</h2>
+        <div class="muted">Lista para imprimir</div>
+      </div>
+      <div id="preview" class="sheet" style="min-height:700px">
+        <div style="text-align:center;color:#999;padding:120px 20px">
+          <div style="font-size:48px;margin-bottom:12px">📋</div>
+          <div style="font-size:16px">Presiona "Generar vista" o activa la actualización automática</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="Cotizacion.js"></script>
+</body>
+</html>
