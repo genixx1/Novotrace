@@ -14,10 +14,9 @@
       
       <div>
         <label>Datos de la Empresa</label>
-        <input id="company_name" type="text" value="NOVOTRACE S.A.C." />
-        <input id="company_address" type="text" placeholder="Dirección" value="" />
-        <input id="company_phone" type="text" placeholder="Teléfono" value="" />
-        <input id="company_email" type="email" placeholder="Email" value="" />
+        <input id="company_name" type="text" value="NOVOTRACE S.A.C." readonly style="background: #f0f3f7; cursor: not-allowed;" />
+        <input id="company_ruc" type="text" placeholder="RUC" value="20603429622" readonly style="background: #f0f3f7; cursor: not-allowed;" />
+        <input id="company_email" type="email" placeholder="Email" value="jgutierrez@novotrace.com.pe" readonly style="background: #f0f3f7; cursor: not-allowed;" />
       </div>
 
       <hr class="divider" />
@@ -27,7 +26,7 @@
         <div class="row">
           <div class="col">
             <label>N° Cotización</label>
-            <input id="quote_number" type="text" placeholder="GC_CCALL25-0001" value="" />
+            <input id="quote_number" type="text" readonly style="background: #e8f4fd; cursor: not-allowed; font-weight: 600;" value="" />
           </div>
           <div class="col">
             <label>Fecha</label>
@@ -97,9 +96,9 @@
       </label>
 
       <div class="controls">
+        <button class="btn success" id="new_quote_btn">+ Nueva Cotización</button>
         <button class="btn" id="preview_btn">Generar Vista</button>
         <button class="btn ghost" id="print_btn">Imprimir / PDF</button>
-        <button class="btn ghost danger" id="reset_btn">Limpiar Todo</button>
       </div>
     </div>
 

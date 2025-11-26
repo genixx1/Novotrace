@@ -1,12 +1,36 @@
 // ========== CONFIGURACIÓN ==========
 const items = [];
 const LOGO_PATH = 'Recurso 43.png';
+const QUOTE_START_NUMBER = 3000;
 
 const currencySymbols = {
   'USD': '$',
   'PEN': 'S/',
   'EUR': '€'
 };
+
+// ========== SISTEMA DE NUMERACIÓN ==========
+function getNextQuoteNumber() {
+  let currentNumber = localStorage.getItem('lastQuoteNumber');
+  if (!currentNumber) {
+    currentNumber = QUOTE_START_NUMBER;
+  } else {
+    currentNumber = parseInt(currentNumber);
+  }
+  return currentNumber;
+}
+
+function incrementQuoteNumber() {
+  let currentNumber = getNextQuoteNumber();
+  let nextNumber = currentNumber + 1;
+  localStorage.setItem('lastQuoteNumber', nextNumber);
+  return currentNumber;
+}
+
+function initializeQuoteNumber() {
+  const quoteNumber = getNextQuoteNumber();
+  document.getElementById('quote_number').value = quoteNumber;
+}
 
 // ========== FUNCIONES AUXILIARES ==========
 function formatMoney(v, curr = 'USD') {
@@ -121,8 +145,7 @@ function updateTotalsPreview() {
 function generatePreview() {
   // Obtener datos del formulario
   const companyName = document.getElementById('company_name').value;
-  const companyAddress = document.getElementById('company_address').value;
-  const companyPhone = document.getElementById('company_phone').value;
+  const companyRuc = document.getElementById('company_ruc').value;
   const companyEmail = document.getElementById('company_email').value;
   const quoteNumber = document.getElementById('quote_number').value;
   const quoteDate = document.getElementById('quote_date').value || new Date().toISOString().slice(0, 10);
@@ -180,9 +203,9 @@ function generatePreview() {
       </div>
       <div class="meta-box">
         <h3>EMPRESA:</h3>
-        <p><strong>${escapeHtml(companyAddress)}</strong></p>
-        ${companyPhone ? `<p>Tel: ${escapeHtml(companyPhone)}</p>` : ''}
-        ${companyEmail ? `<p>Email: ${escapeHtml(companyEmail)}</p>` : ''}
+        <p><strong>${escapeHtml(companyName)}</strong></p>
+        <p>RUC: ${escapeHtml(companyRuc)}</p>
+        <p>Email: ${escapeHtml(companyEmail)}</p>
       </div>
     </div>
 
@@ -261,9 +284,46 @@ function generatePreview() {
   `;
 }
 
+// ========== NUEVA COTIZACIÓN ==========
+function newQuote() {
+  // Incrementar número de cotización
+  incrementQuoteNumber();
+  
+  // Limpiar items
+  items.length = 0;
+  
+  // Reinicializar número de cotización
+  initializeQuoteNumber();
+  
+  // Restablecer fecha
+  document.getElementById('quote_date').value = new Date().toISOString().slice(0, 10);
+  
+  // Limpiar datos del cliente
+  document.getElementById('client_name').value = '';
+  document.getElementById('client_ruc').value = '';
+  document.getElementById('client_address').value = '';
+  
+  // Limpiar notas comerciales
+  document.getElementById('commercial_notes').value = '';
+  
+  // Renderizar tabla vacía
+  renderItemsTable();
+  
+  // Limpiar preview
+  document.getElementById('preview').innerHTML = `
+    <div style="text-align:center;color:#999;padding:100px 20px">
+      <div style="font-size:48px;margin-bottom:15px">📄</div>
+      <div style="font-size:16px">Presiona "Generar Vista" para ver la cotización</div>
+    </div>
+  `;
+}
+
 // ========== EVENTOS ==========
 document.addEventListener('DOMContentLoaded', function() {
   const itemsBody = document.getElementById('items_body');
+  
+  // Inicializar número de cotización
+  initializeQuoteNumber();
   
   // Establecer fecha actual
   document.getElementById('quote_date').value = new Date().toISOString().slice(0, 10);
@@ -349,11 +409,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => window.print(), 300);
   });
 
-  // Botón reset
-  document.getElementById('reset_btn').addEventListener('click', () => {
-    if (confirm('¿Limpiar todo y reiniciar?')) {
-      items.length = 0;
-      location.reload();
+  // Botón nueva cotización
+  document.getElementById('new_quote_btn').addEventListener('click', () => {
+    if (confirm('¿Crear una nueva cotización? Se guardará el número actual y se generará uno nuevo.')) {
+      newQuote();
     }
   });
 

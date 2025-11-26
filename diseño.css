@@ -14,7 +14,8 @@
 }
 
 @page {
-  margin: 0;
+  margin: 15mm 10mm;
+  size: A4;
 }
 
 /* ========== RESET ========== */
@@ -612,31 +613,167 @@ textarea {
 
 /* ========== IMPRESIÓN ========== */
 @media print {
-  body { background: none; }
-  .app { display: block; }
-  .panel:first-child { display: none; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body { 
+    background: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .app { 
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .panel:first-child { 
+    display: none; 
+  }
+  
   .preview-wrap { 
-    padding: 0; 
+    padding: 0;
+    margin: 0;
     overflow-y: visible;
     max-height: none;
     background: none;
+    width: 100%;
   }
+  
   .sheet { 
-    box-shadow: none; 
-    padding: 20px;
-    margin: 0 auto;
-    padding-bottom: 80px;
+    box-shadow: none;
+    padding: 15mm 12mm 20mm 12mm;
+    margin: 0;
+    width: 100%;
+    max-width: 210mm;
+    min-height: auto;
     border: none;
     border-radius: 0;
+    position: relative;
   }
+  
+  .logo-header {
+    margin-bottom: 12px;
+    padding: 0;
+    text-align: center;
+  }
+  
   .logo-header img {
-    height: 70px;
+    height: 50px;
+    width: auto;
+    max-width: 100%;
   }
+  
+  .meta-info {
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+    gap: 12px;
+  }
+  
+  .meta-box {
+    page-break-inside: avoid;
+    padding: 12px;
+  }
+  
+  .meta-box h3 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .meta-box p {
+    font-size: 11px;
+    margin: 3px 0;
+  }
+  
+  .items-section {
+    margin: 15px 0;
+  }
+  
+  .items {
+    margin-top: 10px;
+  }
+  
+  .items th,
+  .items td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  .items th {
+    background: #003d82 !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .notes-section {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+  
+  .notes-section h3 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .notes-section p {
+    font-size: 11px;
+    margin: 5px 0;
+    line-height: 1.5;
+  }
+  
   .payment-display {
-    margin-top: 400px !important;
+    margin-top: 15px !important;
     box-shadow: none;
-    page-break-before: always;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    padding: 15px;
   }
+  
+  .payment-display h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .payment-table {
+    page-break-inside: avoid;
+  }
+  
+  .payment-table th {
+    font-size: 11px;
+    padding: 10px;
+  }
+  
+  .payment-table td {
+    font-size: 11px;
+    padding: 12px 10px;
+  }
+  
+  .payment-table td.bank-logo img {
+    max-width: 70px;
+    max-height: 35px;
+  }
+  
+  .payment-table td.account-data {
+    padding-left: 15px;
+  }
+  
+  .payment-table td.account-data div {
+    margin: 4px 0;
+  }
+  
+  .payment-table td.account-data strong {
+    min-width: 90px;
+    font-size: 11px;
+  }
+  
   .footer-nt {
     background: #003d82 !important;
     color: white !important;
@@ -648,13 +785,10 @@ textarea {
     right: 0 !important;
     width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
+    height: 50px !important;
+    font-size: 12px !important;
     z-index: 9999;
-  }
-  .items th {
-    background: #003d82 !important;
-    color: white !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 }
 
