@@ -277,7 +277,7 @@ function generatePreview() {
       </div>
       <div class="footer-item">
         <span>✉️</span>
-        <span>jgutierrez@novotrace.com.pe</span>
+        <span>ventas@novotrace.com.pe</span>
       </div>
     </div>
   `;
