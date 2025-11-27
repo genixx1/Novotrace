@@ -3,9 +3,9 @@
   --novotrace-blue: #003d82;
   --novotrace-blue-light: #0066cc;
   --novotrace-blue-accent: #00a8e8;
-  --novotrace-orange: #ff6b35;
-  --novotrace-orange-light: #ff8c42;
-  --novotrace-orange-dark: #ff4d1a;
+  --novotrace-orange: #E89B0D;
+  --novotrace-orange-light: #F5A623;
+  --novotrace-orange-dark: #C17D07;
   --text-dark: #1a1a2e;
   --text-muted: #6c757d;
   --text-light: #ffffff;
@@ -17,7 +17,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 61, 130, 0.08);
   --shadow-md: 0 4px 20px rgba(0, 61, 130, 0.12);
   --shadow-lg: 0 8px 32px rgba(0, 61, 130, 0.16);
-  --shadow-orange: 0 4px 16px rgba(255, 107, 53, 0.25);
+  --shadow-orange: 0 4px 16px rgba(232, 155, 13, 0.25);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -138,7 +138,7 @@ textarea:focus,
 select:focus {
   border-color: var(--novotrace-orange);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+  box-shadow: 0 0 0 4px rgba(232, 155, 13, 0.1);
   background: #fff;
   transform: translateY(-2px);
 }
@@ -317,7 +317,7 @@ textarea {
 
 .btn.success:hover {
   background: linear-gradient(135deg, var(--novotrace-orange-dark) 0%, var(--novotrace-orange) 100%);
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+  box-shadow: 0 6px 20px rgba(232, 155, 13, 0.35);
 }
 
 .small {
@@ -720,7 +720,7 @@ textarea {
 .payment-table td.account-data strong {
   display: inline-block;
   min-width: 100px;
-  color: var(--novotrace-orange);
+  color: var(--novotrace-blue);
   font-weight: 700;
 }
 
@@ -900,7 +900,7 @@ textarea {
   }
   
   .items th::after {
-    background: #ff6b35 !important;
+    background: #E89B0D !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -970,7 +970,7 @@ textarea {
   .footer-nt {
     background: #003d82 !important;
     color: white !important;
-    border-top: 4px solid #ff6b35 !important;
+    border-top: 4px solid #E89B0D !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     position: fixed !important;
@@ -986,7 +986,7 @@ textarea {
   }
   
   .payment-display {
-    border: 2px solid #ff6b35 !important;
+    border: 2px solid #E89B0D !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
