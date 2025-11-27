@@ -183,14 +183,13 @@ function generatePreview() {
     itemsHtml = '<tr><td colspan="4" style="text-align:center;color:#999;padding:30px">No hay items agregados</td></tr>';
   }
 
-  // Generar HTML completo del preview
+  // Generar HTML completo del preview (SIN el número de cotización)
   document.getElementById('preview').innerHTML = `
     <div class="logo-header">
       <img src="${LOGO_PATH}" alt="NOVOTRACE" style="height: 80px; width: auto;" />
     </div>
 
     <div style="text-align:right;margin-bottom:20px;">
-      <strong style="color:#003d82;font-size:17px">${escapeHtml(quoteNumber)}</strong><br>
       <span style="font-size:13px">Lima, ${formattedDate}</span>
     </div>
 
@@ -327,6 +326,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Establecer fecha actual
   document.getElementById('quote_date').value = new Date().toISOString().slice(0, 10);
+  
+  // Evento para actualizar el número de cotización cuando se edita manualmente
+  document.getElementById('quote_number').addEventListener('input', function(e) {
+    const newNumber = parseInt(e.target.value) || QUOTE_START_NUMBER;
+    localStorage.setItem('lastQuoteNumber', newNumber);
+  });
   
   // Eventos de inputs en la tabla
   itemsBody.addEventListener('input', function(e) {
