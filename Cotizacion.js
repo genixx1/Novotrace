@@ -120,13 +120,18 @@ function renderItemsTable() {
 
 // ========== CÁLCULOS ==========
 function calculateTotals() {
-  const subtotal = items.reduce((s, it) => {
+  const total = items.reduce((s, it) => {
     return s + (Number(it.qty || 0) * Number(it.price || 0));
   }, 0);
   
-  const total = subtotal;
+  // Los precios ya incluyen IGV, por lo tanto:
+  // Total = Subtotal + IGV
+  // Total = Subtotal * 1.18
+  // Subtotal = Total / 1.18
+  const subtotal = total / 1.18;
+  const igv = total - subtotal;
   
-  return { subtotal, total };
+  return { subtotal, igv, total };
 }
 
 function updateTotalsPreview() {
@@ -134,8 +139,16 @@ function updateTotalsPreview() {
   const curr = getCurrency();
   
   document.getElementById('totals_preview').innerHTML = `
+    <div class="totals-preview-row">
+      <span>Subtotal (sin IGV):</span>
+      <span>${formatMoney(totals.subtotal, curr)}</span>
+    </div>
+    <div class="totals-preview-row">
+      <span>IGV (18%):</span>
+      <span>${formatMoney(totals.igv, curr)}</span>
+    </div>
     <div class="totals-preview-row total">
-      <span>TOTAL (Precios incluyen IGV):</span>
+      <span>TOTAL:</span>
       <span>${formatMoney(totals.total, curr)}</span>
     </div>
   `;
@@ -225,6 +238,23 @@ function generatePreview() {
         </thead>
         <tbody>${itemsHtml}</tbody>
       </table>
+      
+      <div style="margin-top: 20px; text-align: right; padding-right: 12px;">
+        <div style="display: inline-block; min-width: 350px;">
+          <div style="display: flex; justify-content: space-between; padding: 8px 16px; border-bottom: 1px solid #e8ecf1;">
+            <span style="font-weight: 600; color: #6c757d;">Subtotal (sin IGV):</span>
+            <span style="font-weight: 600;">${formatMoney(totals.subtotal, curr)}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 8px 16px; border-bottom: 1px solid #e8ecf1;">
+            <span style="font-weight: 600; color: #6c757d;">IGV (18%):</span>
+            <span style="font-weight: 600;">${formatMoney(totals.igv, curr)}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 16px; background: linear-gradient(135deg, #fff5f2 0%, #ffe8e0 100%); border-radius: 8px; margin-top: 4px;">
+            <span style="font-weight: 700; color: var(--novotrace-blue); font-size: 16px;">TOTAL:</span>
+            <span style="font-weight: 700; color: var(--novotrace-orange); font-size: 16px;">${formatMoney(totals.total, curr)}</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     ${commercialNotes ? `

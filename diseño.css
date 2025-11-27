@@ -1001,5 +1001,310 @@ textarea {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width:1024px) {
-  .app { grid-template-columns: 1fr; }
+  .app { 
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .panel {
+    padding: 20px;
+    max-height: none;
+  }
+  
+  .sheet {
+    width: 100%;
+    min-width: 100%;
+    padding: 30px 20px;
+    min-height: auto;
+  }
+  
+  .logo-header img {
+    height: 60px;
+  }
+  
+  .meta-info {
+    flex-direction: column;
+  }
+  
+  .items th,
+  .items td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+  
+  .payment-display {
+    padding: 20px;
+  }
+  
+  .payment-table td.account-data {
+    font-size: 11px;
+    padding-left: 12px;
+  }
+  
+  .payment-table td.account-data strong {
+    min-width: 80px;
+    font-size: 11px;
+  }
+  
+  .footer-nt {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 12px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .panel {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .row {
+    flex-direction: column;
+  }
+  
+  .items-table {
+    font-size: 12px;
+  }
+  
+  .items-table th,
+  .items-table td {
+    padding: 10px 6px;
+  }
+  
+  .btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  
+  .controls {
+    flex-direction: column;
+  }
+  
+  .controls .btn {
+    width: 100%;
+  }
+  
+  .totals-preview {
+    padding: 16px;
+  }
+  
+  .totals-preview-row {
+    font-size: 14px;
+  }
+  
+  .totals-preview-row.total {
+    font-size: 18px;
+  }
+  
+  .totals-preview-row.total span:last-child {
+    font-size: 20px;
+  }
+  
+  .sheet {
+    padding: 20px 15px;
+    padding-bottom: 100px;
+  }
+  
+  .logo-header img {
+    height: 50px;
+  }
+  
+  .meta-info {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .meta-box {
+    padding: 16px;
+  }
+  
+  .meta-box h3 {
+    font-size: 13px;
+  }
+  
+  .meta-box p {
+    font-size: 12px;
+  }
+  
+  .items th,
+  .items td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+  
+  .notes-section {
+    padding: 20px;
+  }
+  
+  .notes-section h3 {
+    font-size: 14px;
+  }
+  
+  .notes-section p {
+    font-size: 12px;
+  }
+  
+  .payment-display {
+    padding: 16px;
+  }
+  
+  .payment-display h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .payment-table th {
+    font-size: 10px;
+    padding: 12px 8px;
+  }
+  
+  .payment-table td {
+    padding: 12px 8px;
+    font-size: 11px;
+  }
+  
+  .payment-table td.bank-logo {
+    width: 80px;
+    padding: 8px;
+  }
+  
+  .payment-table td.bank-logo img {
+    max-width: 60px;
+    max-height: 30px;
+  }
+  
+  .payment-table td.account-data {
+    font-size: 10px;
+    padding-left: 10px;
+  }
+  
+  .payment-table td.account-data div {
+    margin: 4px 0;
+  }
+  
+  .payment-table td.account-data strong {
+    min-width: 70px;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .footer-nt {
+    font-size: 12px;
+    gap: 10px;
+    padding: 15px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 8px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  .panel {
+    padding: 12px;
+  }
+  
+  label {
+    font-size: 11px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .btn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+  
+  .btn.small {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  
+  .sheet {
+    padding: 15px 10px;
+    padding-bottom: 120px;
+  }
+  
+  .logo-header img {
+    height: 40px;
+  }
+  
+  .items-table th,
+  .items-table td {
+    padding: 8px 4px;
+    font-size: 10px;
+  }
+  
+  .items-table input {
+    font-size: 11px !important;
+  }
+  
+  .items th,
+  .items td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+  
+  .totals-preview {
+    padding: 12px;
+  }
+  
+  .totals-preview-row {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  
+  .totals-preview-row.total {
+    font-size: 16px;
+  }
+  
+  .totals-preview-row.total span:last-child {
+    font-size: 18px;
+  }
+  
+  .payment-table td.account-data strong {
+    min-width: auto;
+    display: inline;
+    margin-bottom: 0;
+  }
+  
+  .footer-nt {
+    font-size: 11px;
+  }
 }
