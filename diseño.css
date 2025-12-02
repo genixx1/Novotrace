@@ -570,29 +570,7 @@ textarea {
 }
 
 /* ========== FOOTER ========== */
-.footer-nt {
-  background: var(--text-dark);
-  height: 60px;
-  color: var(--text-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
-  font-size: 13px;
-  font-weight: 500;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  page-break-inside: avoid;
-}
-
-.footer-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+/* Footer eliminado por solicitud del usuario */
 
 /* ========== ANIMACIONES ========== */
 @keyframes fadeIn {
@@ -663,14 +641,6 @@ textarea {
     print-color-adjust: exact !important;
   }
   
-  .footer-nt {
-    background: var(--text-dark) !important;
-    color: var(--text-light) !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    position: fixed !important;
-    bottom: 0 !important;
-  }
 }
 
 /* ========== RESPONSIVE ========== */

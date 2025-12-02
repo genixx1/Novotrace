@@ -302,17 +302,6 @@ function generatePreview() {
       </table>
     </div>
 
-    <!-- Footer -->
-    <div class="footer-nt">
-      <div class="footer-item">
-        <span>🌐</span>
-        <span>novotrace.com.pe</span>
-      </div>
-      <div class="footer-item">
-        <span>✉️</span>
-        <span>ventas@novotrace.com.pe</span>
-      </div>
-    </div>
   `;
 }
 
