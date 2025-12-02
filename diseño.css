@@ -590,57 +590,106 @@ textarea {
 
 /* ========== IMPRESIÓN ========== */
 @media print {
+  /* Ocultar todo excepto la vista previa */
   body { 
-    background: none;
-    margin: 0;
-    padding: 0;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
+  /* Ocultar el grid principal */
   .app { 
-    display: block;
-    margin: 0;
-    padding: 0;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
   }
   
+  /* Ocultar completamente el panel del formulario */
   .panel:first-child { 
-    display: none; 
+    display: none !important;
+    visibility: hidden !important;
   }
   
+  /* Mostrar solo el panel de preview */
   .preview-wrap { 
-    padding: 0;
-    margin: 0;
-    background: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
   
+  /* Ajustar la hoja para impresión */
   .sheet { 
-    box-shadow: none;
-    padding: 15mm 12mm;
-    margin: 0;
-    width: 100%;
-    border: none;
+    box-shadow: none !important;
+    padding: 15mm 12mm !important;
+    margin: 0 !important;
+    width: 100% !important;
+    border: none !important;
+    min-height: auto !important;
+    position: relative !important;
   }
   
   .quote-header {
     margin-bottom: 20px;
     padding-bottom: 15px;
+    page-break-after: avoid;
   }
   
   .logo-section img {
     height: 55px;
   }
   
+  /* Mantener colores de fondo en tablas */
   .items th {
-    background: var(--bg-light) !important;
+    background: #f8f9fa !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
   
   .payment-table th {
-    background: var(--bg-light) !important;
+    background: #f8f9fa !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
   
+  .company-info-box {
+    background: #f8f9fa !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid;
+  }
+  
+  .notes-section {
+    background: #f8f9fa !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid;
+  }
+  
+  .totals-box {
+    background: #f8f9fa !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Evitar saltos de página en elementos importantes */
+  .payment-display {
+    page-break-inside: avoid;
+  }
+  
+  .items-section {
+    page-break-inside: auto;
+  }
+  
+  .meta-info {
+    page-break-inside: avoid;
+  }
 }
 
 /* ========== RESPONSIVE ========== */
