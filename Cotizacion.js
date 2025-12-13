@@ -160,6 +160,9 @@ function generatePreview() {
   const clientName = document.getElementById('client_name').value;
   const clientRuc = document.getElementById('client_ruc').value;
   const clientAddress = document.getElementById('client_address').value;
+  const clientCity = document.getElementById('client_city').value;
+  const clientPhone = document.getElementById('client_phone').value;
+  const clientEmail = document.getElementById('client_email').value;
   const validityDays = document.getElementById('validity_days').value || 30;
   const commercialNotes = document.getElementById('commercial_notes').value;
   const curr = getCurrency();
@@ -190,37 +193,57 @@ function generatePreview() {
   }
 
   document.getElementById('preview').innerHTML = `
-    <!-- Header con Logo y Cotización -->
-    <div class="quote-header">
-      <div class="logo-section">
-        <img src="${LOGO_PATH}" alt="NOVOTRACE" />
+    <!-- Header con Logo, Info Empresa y Cotización -->
+    <div class="header-top">
+      <div class="company-section">
+        <img src="${LOGO_PATH}" alt="NOVOTRACE" class="company-logo" />
+        <div class="company-details">
+          <p class="company-name">${escapeHtml(companyName)}</p>
+          <p>Ruc: ${escapeHtml(companyRuc)}</p>
+          <p>Av. Pacto andino S/N - LIMA</p>
+          <p>e-mail: <span style="color: #0066cc; text-decoration: underline">${escapeHtml(companyEmail)}</span></p>
+          <p>TELF.: 992198342</p>
+        </div>
       </div>
-      <div class="quote-info">
-        <div class="quote-title">COTIZACIÓN</div>
-        <div class="quote-number">N° ${quoteNumber}</div>
-        <div class="quote-date">Fecha: ${formattedDate}</div>
+      <div class="quote-number-box">
+        <div class="quote-box-title">COTIZACIÓN</div>
+        <div class="quote-box-number">${String(quoteNumber).padStart(3, '0')}-${String(quoteNumber).padStart(5, '0')}</div>
       </div>
     </div>
 
-    <!-- Información de la Empresa -->
-    <div class="company-info-box">
-      <h4>Información de la Empresa</h4>
-      <p><strong>${escapeHtml(companyName)}</strong></p>
-      <p>RUC: ${escapeHtml(companyRuc)}</p>
-      <p>Av. Pacto Andino S/N - LIMA</p>
-      <p>Email: ${escapeHtml(companyEmail)}</p>
-      <p>Teléfono: 992198342</p>
-    </div>
+    <!-- Título de Cotización -->
+    <div class="quote-main-title">COTIZACIÓN DE RASTREO SATELITAL</div>
 
-    <!-- Información del Cliente -->
-    <div class="meta-info">
-      <div class="meta-box">
-        <h3>CLIENTE</h3>
-        <p><strong>${escapeHtml(clientName)}</strong></p>
-        ${clientRuc ? `<p>RUC: ${escapeHtml(clientRuc)}</p>` : ''}
-        ${clientAddress ? `<p>${escapeHtml(clientAddress)}</p>` : ''}
-      </div>
-    </div>
+    <!-- Texto de introducción -->
+    <p class="intro-text">Atendiendo su amable solicitud estamos enviando una cotización, para nosotros es un placer poner nuestra empresa a su servicio</p>
+
+    <!-- Tabla de Datos del Cliente -->
+    <table class="client-data-table">
+      <tbody>
+        <tr>
+          <td class="label-cell">FECHA:</td>
+          <td class="data-cell">${formattedDate}</td>
+          <td class="label-cell">DIRECCIÓN:</td>
+          <td class="data-cell">${escapeHtml(clientAddress)}</td>
+        </tr>
+        <tr>
+          <td class="label-cell">RUC:</td>
+          <td class="data-cell">${escapeHtml(clientRuc)}</td>
+          <td class="label-cell">CIUDAD:</td>
+          <td class="data-cell">${escapeHtml(clientCity)}</td>
+        </tr>
+        <tr>
+          <td class="label-cell">CLIENTE:</td>
+          <td class="data-cell">${escapeHtml(clientName)}</td>
+          <td class="label-cell">TELEFONO:</td>
+          <td class="data-cell">${escapeHtml(clientPhone)}</td>
+        </tr>
+        <tr>
+          <td class="label-cell">E-MAIL:</td>
+          <td class="data-cell" colspan="3">${escapeHtml(clientEmail)}</td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- Tabla de Productos -->
     <div class="items-section">
@@ -314,6 +337,9 @@ function newQuote() {
   document.getElementById('client_name').value = '';
   document.getElementById('client_ruc').value = '';
   document.getElementById('client_address').value = '';
+  document.getElementById('client_city').value = '';
+  document.getElementById('client_phone').value = '';
+  document.getElementById('client_email').value = '';
   document.getElementById('commercial_notes').value = '';
   renderItemsTable();
   document.getElementById('preview').innerHTML = `
@@ -388,6 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const fieldsToWatch = [
     'company_name', 'company_email',
     'quote_number', 'quote_date', 'client_name', 'client_ruc', 'client_address',
+    'client_city', 'client_phone', 'client_email',
     'currency', 'validity_days', 'commercial_notes'
   ];
   
