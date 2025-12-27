@@ -319,36 +319,28 @@ textarea {
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 2px solid var(--border-color);
-  flex-wrap: wrap;
-  gap: 16px;
 }
 
 .company-section {
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  flex: 1;
-  min-width: 0;
 }
 
 .company-logo {
   height: 60px;
   width: auto;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
 .company-details {
   font-size: 11px;
   line-height: 1.6;
   color: var(--text-dark);
-  flex: 1;
-  min-width: 0;
 }
 
 .company-details p {
   margin: 2px 0;
-  word-wrap: break-word;
 }
 
 .company-name {
@@ -364,7 +356,6 @@ textarea {
   padding: 12px 20px;
   border-radius: 4px;
   min-width: 180px;
-  flex-shrink: 0;
 }
 
 .quote-box-title {
@@ -822,23 +813,6 @@ textarea {
   .meta-info {
     grid-template-columns: 1fr;
   }
-  
-  .header-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .company-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .quote-number-box {
-    width: 100%;
-    max-width: 100%;
-    min-width: auto;
-  }
 }
 
 @media (max-width: 768px) {
@@ -856,85 +830,9 @@ textarea {
   
   .sheet {
     padding: 20px 15px;
-    width: 100%;
-    max-width: 100%;
   }
   
   .logo-section img {
     height: 50px;
-  }
-  
-  .header-top {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .company-section {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-  }
-  
-  .company-logo {
-    height: 50px;
-  }
-  
-  .company-details {
-    font-size: 10px;
-  }
-  
-  .company-name {
-    font-size: 12px;
-  }
-  
-  .quote-number-box {
-    width: 100%;
-    padding: 10px 16px;
-    min-width: auto;
-  }
-  
-  .quote-box-title {
-    font-size: 12px;
-  }
-  
-  .quote-box-number {
-    font-size: 16px;
-  }
-  
-  .client-data-table {
-    font-size: 11px;
-  }
-  
-  .client-data-table td {
-    padding: 8px 10px;
-    font-size: 11px;
-  }
-  
-  .label-cell {
-    font-size: 10px;
-  }
-  
-  .items th,
-  .items td {
-    padding: 8px 6px;
-    font-size: 11px;
-  }
-  
-  .totals-box {
-    max-width: 100%;
-    font-size: 12px;
-  }
-  
-  .payment-table td {
-    padding: 10px 8px;
-    font-size: 11px;
-  }
-  
-  .notes-section {
-    font-size: 11px;
-  }
-  
-  .notes-section p {
-    font-size: 11px;
   }
 }
