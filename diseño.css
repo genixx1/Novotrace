@@ -305,110 +305,103 @@ textarea {
   position: relative;
 }
 
-/* ========== NUEVO HEADER COMPACTO ========== */
-.header-top {
+/* ========== HEADER CON LOGO Y COTIZACIÓN ========== */
+.quote-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
 }
 
-.company-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
+.logo-section {
+  flex: 0 0 auto;
 }
 
-.company-logo {
-  height: 60px;
+.logo-section img {
+  height: 70px;
   width: auto;
   display: block;
-  margin-bottom: 5px;
 }
 
-.company-details {
-  font-size: 11px;
-  line-height: 1.6;
-  color: var(--text-dark);
-  text-align: center;
+.quote-info {
+  text-align: right;
+  flex: 0 0 auto;
 }
 
-.company-details p {
-  margin: 2px 0;
-}
-
-.company-name {
-  font-weight: 600;
-  font-size: 12px;
-}
-
-.quote-number-box {
-  border: 2px solid var(--text-dark);
-  padding: 8px 16px;
-  text-align: center;
-  min-width: 140px;
-}
-
-.quote-box-title {
-  font-size: 11px;
+.quote-title {
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 1px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.quote-number {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
   margin-bottom: 4px;
 }
 
-.quote-box-number {
-  font-size: 14px;
-  font-weight: 600;
+.quote-date {
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
-/* ========== TÍTULO DE COTIZACIÓN ========== */
-.quote-main-title {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: underline;
-  margin: 20px 0 16px 0;
-  color: var(--text-dark);
-}
-
-/* ========== TEXTO INTRODUCCIÓN ========== */
-.intro-text {
-  font-size: 12px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  text-align: justify;
-  color: var(--text-dark);
-}
-
-/* ========== TABLA DE DATOS DEL CLIENTE ========== */
-.client-data-table {
-  width: 100%;
-  border-collapse: collapse;
+/* ========== COMPANY INFO ========== */
+.company-info-box {
+  background: var(--bg-light);
+  padding: 16px 20px;
+  border-radius: 4px;
+  border-left: 3px solid var(--text-dark);
   margin-bottom: 24px;
-  border: 2px solid var(--text-dark);
 }
 
-.client-data-table td {
-  border: 1px solid var(--text-dark);
-  padding: 8px 10px;
+.company-info-box h4 {
   font-size: 11px;
-}
-
-.client-data-table .label-cell {
   font-weight: 700;
-  background: var(--bg-white);
-  width: 15%;
-  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
-.client-data-table .data-cell {
+.company-info-box p {
+  font-size: 13px;
+  margin: 4px 0;
+  color: var(--text-dark);
+}
+
+/* ========== SECCIONES PREVIEW ========== */
+.meta-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.meta-box {
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
   background: var(--bg-white);
-  text-align: left;
-  width: 35%;
+}
+
+.meta-box h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.meta-box p {
+  font-size: 13px;
+  margin: 4px 0;
+  color: var(--text-dark);
 }
 
 .items-section {
@@ -641,22 +634,14 @@ textarea {
     position: relative !important;
   }
   
-  .header-top {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+  .quote-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
     page-break-after: avoid;
   }
   
-  .company-logo {
-    height: 45px;
-  }
-  
-  .client-data-table {
-    page-break-inside: avoid;
-  }
-  
-  .quote-main-title {
-    page-break-after: avoid;
+  .logo-section img {
+    height: 55px;
   }
   
   /* Mantener colores de fondo en tablas */
@@ -719,21 +704,17 @@ textarea {
     padding: 30px 20px;
   }
   
-  .header-top {
+  .quote-header {
     flex-direction: column;
     gap: 16px;
   }
   
-  .quote-number-box {
-    align-self: flex-start;
+  .quote-info {
+    text-align: left;
   }
   
-  .client-data-table {
-    font-size: 10px;
-  }
-  
-  .client-data-table td {
-    padding: 6px 8px;
+  .meta-info {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -754,12 +735,7 @@ textarea {
     padding: 20px 15px;
   }
   
-  .company-logo {
-    height: 45px;
-  }
-  
-  .company-section {
-    flex-direction: column;
-    gap: 8px;
+  .logo-section img {
+    height: 50px;
   }
 }
