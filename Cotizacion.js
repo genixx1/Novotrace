@@ -207,7 +207,7 @@ function generatePreview() {
       </div>
       <div class="quote-number-box">
         <div class="quote-box-title">COTIZACIÓN</div>
-        <div class="quote-box-number">${String(quoteNumber).padStart(3, '0')}-${String(quoteNumber).padStart(5, '0')}</div>
+        <div class="quote-box-number">${quoteNumber}</div>
       </div>
     </div>
 
