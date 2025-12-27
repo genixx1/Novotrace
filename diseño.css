@@ -305,6 +305,103 @@ textarea {
   position: relative;
 }
 
+/* ========== ELEMENTOS OCULTOS ========== */
+.quote-main-title,
+.intro-text {
+  display: none !important;
+}
+
+/* ========== HEADER TOP CON DISEÑO ACTUALIZADO ========== */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.company-section {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.company-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.company-details {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.company-details p {
+  margin: 2px 0;
+}
+
+.company-name {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--primary-dark);
+}
+
+.quote-number-box {
+  text-align: center;
+  border: 2px solid var(--text-dark);
+  padding: 12px 20px;
+  border-radius: 4px;
+  min-width: 180px;
+}
+
+.quote-box-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.quote-box-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* ========== TABLA DE DATOS DEL CLIENTE ========== */
+.client-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
+}
+
+.client-data-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  font-size: 12px;
+}
+
+.label-cell {
+  background: var(--bg-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  width: 120px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.data-cell {
+  background: var(--bg-white);
+  color: var(--text-dark);
+}
+
 /* ========== HEADER CON LOGO Y COTIZACIÓN ========== */
 .quote-header {
   display: flex;

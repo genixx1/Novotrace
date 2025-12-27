@@ -211,12 +211,6 @@ function generatePreview() {
       </div>
     </div>
 
-    <!-- Título de Cotización -->
-    <div class="quote-main-title">COTIZACIÓN DE RASTREO SATELITAL</div>
-
-    <!-- Texto de introducción -->
-    <p class="intro-text">Atendiendo su amable solicitud estamos enviando una cotización, para nosotros es un placer poner nuestra empresa a su servicio</p>
-
     <!-- Tabla de Datos del Cliente -->
     <table class="client-data-table">
       <tbody>
